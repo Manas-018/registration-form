@@ -1,0 +1,24 @@
+.inmar-container {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
+    &__home {
+        margin: 1.5rem 2.5rem;
+        background: #fbfbfc;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__logo {
+        display: flex;
+        align-items: center;
+        background: white;
+        justify-content: space-between;
+
+        img {
+            width: 8.3%;
+        }
+    }
+}
