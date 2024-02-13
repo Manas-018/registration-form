@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RegisterFormComponent } from './register-form.component';
 import { Routes, RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { SharedModule } from 'src/app/shared.module';
 
 const routes: Routes = [
   {
@@ -13,7 +16,11 @@ const routes: Routes = [
   declarations: [RegisterFormComponent],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
-  ]
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule.forChild(routes),
+    SharedModule
+  ],
+  entryComponents: [RegisterFormComponent]
 })
 export class RegisterFormModule { }
