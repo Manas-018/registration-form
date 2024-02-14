@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { SharedModule } from 'src/app/shared.module';
 import { PersonalInfoComponent } from './personal-info/personal-info.component';
+import { WorkExperienceComponent } from './work-experience/work-experience.component';
 
 const routes: Routes = [
   {
@@ -14,7 +15,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [RegisterFormComponent, PersonalInfoComponent],
+  declarations: [RegisterFormComponent, PersonalInfoComponent, WorkExperienceComponent],
   imports: [
     CommonModule,
     FormsModule,

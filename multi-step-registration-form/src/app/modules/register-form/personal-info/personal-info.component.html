@@ -1,16 +1,16 @@
 <form *ngIf="firstFormGroup" [formGroup]="firstFormGroup" class="inmar-personal-form">
     <mat-form-field class="inmar-form-field">
-        <input matInput placeholder="Enter your name" formControlName="nameFormControl" required [errorStateMatcher]="validate">
+        <input matInput placeholder="Enter your name" [formControlName]="'nameFormControl'" required [errorStateMatcher]="validate">
         <mat-error>{{getErrorMessage('nameFormControl')}}</mat-error>
     </mat-form-field>
     <br/>
     <mat-form-field class="inmar-form-field">
-        <input matInput placeholder="Enter your email" formControlName="emailFormControl" required [errorStateMatcher]="validate">
+        <input matInput placeholder="Enter your email" [formControlName]="'emailFormControl'" required [errorStateMatcher]="validate">
         <mat-error>{{getErrorMessage('emailFormControl')}}</mat-error>
     </mat-form-field>
     <br/>
     <mat-form-field class="inmar-form-field">
-        <input matInput placeholder="Contact No." formControlName="phoneFormControl" maxlength="10" required [errorStateMatcher]="validate">
+        <input matInput placeholder="Contact No." [formControlName]="'phoneFormControl'" maxlength="10" required [errorStateMatcher]="validate">
         <mat-error>{{getErrorMessage('phoneFormControl')}}</mat-error>
     </mat-form-field>
     <br/>

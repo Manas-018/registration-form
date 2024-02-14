@@ -8,5 +8,7 @@ export const routePaths = {
     requiredEmail: 'Enter an email',
     invalidEmail: 'Not a valid email',
     invalidPhoneNo: 'Enter a valid contact no.',
-    requiredPhoneNo: 'Enter your contact no.'
+    requiredPhoneNo: 'Enter your contact no.',
+    requiredCompany: 'Enter company name',
+    requiredCompanyOption: 'Select your company'
   }

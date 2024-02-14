@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Validate } from 'src/app/Utils/Validators.utils';
 import { errorMessages } from 'src/app/constants/common';
@@ -15,7 +15,7 @@ export class PersonalInfoComponent implements OnInit, OnDestroy {
   firstFormGroup: FormGroup;
   validate = new Validate();
   languages: string[] = ['English', 'Hindi', 'Telgu', 'Tamil', 'Bengali'];
-  @Output() valueChanged = new EventEmitter<any>();
+  @Output() valueChangedFirstForm = new EventEmitter<any>();
   unbinder: EventEmitter<any> = new EventEmitter<any>();
   nextDisabled: boolean = true;
 
@@ -37,7 +37,7 @@ export class PersonalInfoComponent implements OnInit, OnDestroy {
     startWith(this.firstFormGroup.value),
     pairwise()).subscribe(([oldFormValue, newFormValue]) => {
       this.nextDisabled = !this.firstFormGroup.valid;
-      this.valueChanged.emit(this.firstFormGroup);
+      this.valueChangedFirstForm.emit(this.firstFormGroup);
     });
   }
 

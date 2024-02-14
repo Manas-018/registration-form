@@ -10,7 +10,8 @@ export class RegisterFormComponent implements OnInit {
 
   isLinear: boolean = true;
   isValidfirstForm: boolean = true;
-  secondFormGroup: FormGroup;
+  isValidSecondForm: boolean = true;
+  // secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
 
   constructor(private fb: FormBuilder) { }
@@ -19,13 +20,13 @@ export class RegisterFormComponent implements OnInit {
     // this.firstFormGroup = this.fb.group({
     //   firstCtrl: ['', Validators.required]
     // });
-    this.secondFormGroup = this.fb.group({
-      secondCtrl: ['', Validators.required]
-    });
+    // this.secondFormGroup = this.fb.group({
+    //   secondCtrl: ['', Validators.required]
+    // });
   }
 
-  valueChanged(formInstance) {
-this.isValidfirstForm = formInstance.valid;
+  valueChangedFirstForm(formInstance) {
+    this.isValidfirstForm = formInstance.valid;
   }
 
 }
