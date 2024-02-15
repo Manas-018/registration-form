@@ -25,7 +25,7 @@
                             </mat-form-field>
                             <br/>
                             <mat-form-field class="inmar-form-field">
-                                <input matInput placeholder="Designation" [formControlName]="'designationControl'" required
+                                <input matInput placeholder="Role" [formControlName]="'designationControl'" required
                                     [errorStateMatcher]="validate">
                                 <mat-error>{{getErrorMessage('companyFormControl', i)}}</mat-error>
                             </mat-form-field>
@@ -50,6 +50,9 @@
                         </mat-card>
                     </div>
                 </ng-container>
+                <br/>
+                <button mat-raised-button mat-button matStepperPrevious>Back</button> &nbsp;&nbsp;
+                <button mat-raised-button mat-button matStepperNext [disabled]="nextDisabled">Next</button>
             </div>
         </form>
     </div>
