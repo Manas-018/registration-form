@@ -12,7 +12,7 @@ const routes: Routes = [
     path: routePaths.REGISTRATION,
     loadChildren: () => import('./modules/register-form/register-form.module').then(m => m.RegisterFormModule)
   },
-  { path: '', redirectTo: routePaths.REGISTRATION, pathMatch: 'full' }
+  { path: '', redirectTo: routePaths.LOGIN, pathMatch: 'full' }
 ];
 
 @NgModule({

@@ -11,6 +11,7 @@
     <br/>
     <mat-form-field class="inmar-form-field">
         <input matInput placeholder="Contact No." [formControlName]="'phoneFormControl'" maxlength="10" required [errorStateMatcher]="validate">
+        <mat-icon matSuffix>phone</mat-icon>
         <mat-error>{{getErrorMessage('phoneFormControl')}}</mat-error>
     </mat-form-field>
     <br/>

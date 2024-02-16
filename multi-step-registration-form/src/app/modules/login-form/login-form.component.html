@@ -1,1 +1,33 @@
-<p>login-form works!</p>
+<mat-card class="login-card">
+    <mat-card-header>
+        <mat-card-title>Sign In</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="example-container" [formGroup]="loginForm">
+            <div>
+                <mat-form-field [floatLabel]="'always'">
+                    <input matInput placeholder="Enter your email" [formControlName]="'email'" required>
+                    <mat-error *ngIf="loginForm.get('email').invalid">{{getErrorMessage()}}</mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field [floatLabel]="'always'">
+                    <input matInput placeholder="Enter your password" [formControlName]="'password'" required
+                        [type]="hide ? 'password' : 'text'">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+            </div>
+            <div>
+                <button mat-raised-button color="primary" [disabled]="loginForm.invalid"
+                    (click)="login('You are not registered. Please register yourself by clicking on Create Account', '')">Login</button>
+            </div>
+            <div>Don't have an account yet?
+                <button mat-button color="accent" (click)="goToRegistrationForm()">Create Account</button>
+
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>
