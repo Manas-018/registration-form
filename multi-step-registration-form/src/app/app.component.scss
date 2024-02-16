@@ -1,21 +1,22 @@
 .inmar-container {
     width: 100%;
-    // height: -webkit-fill-available;
+    height: 100%;
     margin: 0;
     padding: 0;
-    background: aliceblue;
+    overflow-y: hidden;
+
 
     &__home {
         margin: 1.5rem 2.5rem;
-        background: #fbfbfc;
         display: flex;
         flex-direction: column;
+        height: 100%;
     }
 
     &__logo {
         display: flex;
         align-items: center;
-        background: white;
+        background: #fbfbfc;
         justify-content: space-between;
 
         img {
@@ -24,7 +25,7 @@
     }
 
     &__body {
-        
+        height: 100%;
     }
 }
 
@@ -32,6 +33,5 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 90%;
-    // flex-direction: column;
+    height: calc(100% - 10%);
 }
