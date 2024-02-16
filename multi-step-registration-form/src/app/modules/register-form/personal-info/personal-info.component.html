@@ -16,11 +16,11 @@
     <br/>
     <mat-form-field class="inmar-form-field">
         <mat-label>Languages</mat-label>
-        <mat-select [formControl]="languageFormControl" multiple>
-          <mat-option *ngFor="let language of languages" [value]="language">{{language}}</mat-option>
+        <mat-select [formControl]="languageFormControl" name="languageFormControl" multiple>
+          <mat-option *ngFor="let language of languages" [value]="language" (onSelectionChange)="onLanguageChange($event)">{{language}}</mat-option>
         </mat-select>
       </mat-form-field>
     <div>
-        <button mat-raised-button [disabled]="nextDisabled" matStepperNext>Next</button>
+        <button mat-raised-button [disabled]="nextDisabled" matStepperNext (click)="onFormSubmit()">Next</button>
     </div>
 </form>

@@ -15,7 +15,8 @@ export class WorkExperienceComponent implements OnInit, OnDestroy {
   arr: FormArray;
   validate = new Validate();
   companies: string[] = ['Gainsight', 'IVY Comptech', 'Inmar', 'Cognizant', 'TCS', 'Others'];
-  @Output() valueChangedFirstForm = new EventEmitter<any>();
+  @Output() valueChangedSecondForm = new EventEmitter<any>();
+  @Output() onSubmit = new EventEmitter<any>();
   unbinder: EventEmitter<any> = new EventEmitter<any>();
   nextDisabled: boolean = true;
   isExperienced: boolean = false;
@@ -44,7 +45,7 @@ export class WorkExperienceComponent implements OnInit, OnDestroy {
       startWith(this.SecondFormGroup.value),
       pairwise()).subscribe(([oldFormValue, newFormValue]) => {
         this.nextDisabled = !this.SecondFormGroup.valid;
-        this.valueChangedFirstForm.emit(this.SecondFormGroup);
+        this.valueChangedSecondForm.emit(this.SecondFormGroup);
       });
       this.isShowExperiencedForm = true;
   }
@@ -96,6 +97,10 @@ export class WorkExperienceComponent implements OnInit, OnDestroy {
     const arrayControl = this.SecondFormGroup.get('arr') as FormArray;
     const currControl = arrayControl.at(index) as FormGroup;
     this.isDisabledEndDate = !currControl.controls['isFirstCompany'].value;
+  }
+
+  onFormSubmit() {
+    this.onSubmit.emit(this.SecondFormGroup.value);
   }
 
   ngOnDestroy(): void {

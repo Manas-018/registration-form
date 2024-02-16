@@ -15,7 +15,9 @@ export class PersonalInfoComponent implements OnInit, OnDestroy {
   firstFormGroup: FormGroup;
   validate = new Validate();
   languages: string[] = ['English', 'Hindi', 'Telgu', 'Tamil', 'Bengali'];
+  selectedLanguages: string[] = [];
   @Output() valueChangedFirstForm = new EventEmitter<any>();
+  @Output() onSubmit = new EventEmitter<any>();
   unbinder: EventEmitter<any> = new EventEmitter<any>();
   nextDisabled: boolean = true;
 
@@ -30,15 +32,15 @@ export class PersonalInfoComponent implements OnInit, OnDestroy {
       nameFormControl: ['', Validators.required],
       emailFormControl: ['', [Validators.required, Validators.email]],
       phoneFormControl: ['', [Validators.pattern('[0-9]\\d{9}')]],
-      languageFormControl: ['']
+      languageFormControl: [[]]
     });
-    this.firstFormGroup.valueChanges.pipe( throttleTime(200),
-    takeUntil(this.unbinder),
-    startWith(this.firstFormGroup.value),
-    pairwise()).subscribe(([oldFormValue, newFormValue]) => {
-      this.nextDisabled = !this.firstFormGroup.valid;
-      this.valueChangedFirstForm.emit(this.firstFormGroup);
-    });
+    this.firstFormGroup.valueChanges.pipe(
+      takeUntil(this.unbinder),
+      startWith(this.firstFormGroup.value),
+      pairwise()).subscribe(([oldFormValue, newFormValue]) => {
+        this.nextDisabled = !this.firstFormGroup.valid;
+        this.valueChangedFirstForm.emit(this.firstFormGroup);
+      });
   }
 
   getErrorMessage(controlName) {
@@ -59,7 +61,22 @@ export class PersonalInfoComponent implements OnInit, OnDestroy {
     return errorMessage;
   }
 
-  ngOnDestroy(){
+  onLanguageChange(event) {
+    if (event.isUserInput) {
+      if (event.source.selected) {
+        this.selectedLanguages.push(event.source.value);
+      } else if (!event.source.selected && this.selectedLanguages.indexOf(event.source.value) !== -1) {
+        this.selectedLanguages.splice(this.selectedLanguages.indexOf(event.source.value), 1);
+      }
+    }
+  }
+
+  onFormSubmit() {
+    this.firstFormGroup.get('languageFormControl').patchValue(this.selectedLanguages);
+    this.onSubmit.emit(this.firstFormGroup.value);
+  }
+
+  ngOnDestroy() {
     this.unbinder.next('DESTROYED');
   }
 }

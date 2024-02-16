@@ -7,6 +7,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared.module';
 import { PersonalInfoComponent } from './personal-info/personal-info.component';
 import { WorkExperienceComponent } from './work-experience/work-experience.component';
+import { EducationDetailComponent } from './education-detail/education-detail.component';
+import { SkillsComponent } from './skills/skills.component';
 
 const routes: Routes = [
   {
@@ -15,7 +17,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [RegisterFormComponent, PersonalInfoComponent, WorkExperienceComponent],
+  declarations: [RegisterFormComponent, PersonalInfoComponent, WorkExperienceComponent, EducationDetailComponent, SkillsComponent],
   imports: [
     CommonModule,
     FormsModule,

@@ -52,7 +52,7 @@
                 </ng-container>
                 <br/>
                 <button mat-raised-button mat-button matStepperPrevious>Back</button> &nbsp;&nbsp;
-                <button mat-raised-button mat-button matStepperNext [disabled]="nextDisabled">Next</button>
+                <button mat-raised-button mat-button matStepperNext [disabled]="nextDisabled" (click)="onFormSubmit()">Next</button>
             </div>
         </form>
     </div>

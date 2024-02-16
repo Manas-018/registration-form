@@ -6,19 +6,19 @@
     <mat-horizontal-stepper [linear]="isLinear" #stepper>
       <mat-step [completed]="isValidfirstForm">
         <ng-template matStepLabel>Personal Information</ng-template>
-        <app-personal-info (valueChangedFirstForm)="valueChangedFirstForm($event)"></app-personal-info>
+        <app-personal-info (valueChangedFirstForm)="valueChangedFirstForm($event)" (onSubmit)="onNextClick($event)"></app-personal-info>
       </mat-step>
       <mat-step [completed]="isValidSecondForm">
         <ng-template matStepLabel>Work Experience</ng-template>
-        <app-work-experience></app-work-experience>
+        <app-work-experience (valueChangedSecondForm)="valueChangedSecondForm($event)" (onSubmit)="onNextClick($event)"></app-work-experience>
       </mat-step>
       <mat-step>
-        <ng-template matStepLabel></ng-template>
-        You are now done.
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button (click)="stepper.reset()">Reset</button>
-        </div>
+        <ng-template matStepLabel>Education Details</ng-template>
+        <app-education-detail></app-education-detail>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Skills</ng-template>
+        <app-skills></app-skills>
       </mat-step>
     </mat-horizontal-stepper>
 
