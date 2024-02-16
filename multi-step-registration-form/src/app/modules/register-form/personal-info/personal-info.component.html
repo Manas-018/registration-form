@@ -1,0 +1,26 @@
+<form *ngIf="firstFormGroup" [formGroup]="firstFormGroup" class="inmar-personal-form">
+    <mat-form-field class="inmar-form-field">
+        <input matInput placeholder="Enter your name" [formControlName]="'nameFormControl'" required [errorStateMatcher]="validate">
+        <mat-error>{{getErrorMessage('nameFormControl')}}</mat-error>
+    </mat-form-field>
+    <br/>
+    <mat-form-field class="inmar-form-field">
+        <input matInput placeholder="Enter your email" [formControlName]="'emailFormControl'" required [errorStateMatcher]="validate">
+        <mat-error>{{getErrorMessage('emailFormControl')}}</mat-error>
+    </mat-form-field>
+    <br/>
+    <mat-form-field class="inmar-form-field">
+        <input matInput placeholder="Contact No." [formControlName]="'phoneFormControl'" maxlength="10" required [errorStateMatcher]="validate">
+        <mat-error>{{getErrorMessage('phoneFormControl')}}</mat-error>
+    </mat-form-field>
+    <br/>
+    <mat-form-field class="inmar-form-field">
+        <mat-label>Languages</mat-label>
+        <mat-select [formControl]="languageFormControl" name="languageFormControl" multiple>
+          <mat-option *ngFor="let language of languages" [value]="language" (onSelectionChange)="onLanguageChange($event)">{{language}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    <div>
+        <button mat-raised-button [disabled]="nextDisabled" matStepperNext (click)="onFormSubmit()">Next</button>
+    </div>
+</form>

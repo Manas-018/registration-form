@@ -1,41 +1,26 @@
 <div class="inamr-registration-container">
-    <div class="inamr-registration-container__heading">
-        <h2 class="mat-h2">Register Yourself</h2>
-    </div>
-    <div class="inamr-registration-container__steps">
-        <mat-horizontal-stepper [linear]="isLinear" #stepper>
-            <mat-step [stepControl]="firstFormGroup">
-              <form [formGroup]="firstFormGroup">
-                <ng-template matStepLabel>Fill out your name</ng-template>
-                <mat-form-field>
-                  <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-                </mat-form-field>
-                <div>
-                  <button mat-button matStepperNext>Next</button>
-                </div>
-              </form>
-            </mat-step>
-            <mat-step [stepControl]="secondFormGroup">
-              <form [formGroup]="secondFormGroup">
-                <ng-template matStepLabel>Fill out your address</ng-template>
-                <mat-form-field>
-                  <input matInput placeholder="Address" formControlName="secondCtrl" required>
-                </mat-form-field>
-                <div>
-                  <button mat-button matStepperPrevious>Back</button>
-                  <button mat-button matStepperNext>Next</button>
-                </div>
-              </form>
-            </mat-step>
-            <mat-step>
-              <ng-template matStepLabel>Done</ng-template>
-              You are now done.
-              <div>
-                <button mat-button matStepperPrevious>Back</button>
-                <button mat-button (click)="stepper.reset()">Reset</button>
-              </div>
-            </mat-step>
-          </mat-horizontal-stepper>
+  <div class="inamr-registration-container__heading">
+    <h2 class="mat-h2">Register Yourself</h2>
+  </div>
+  <div class="inamr-registration-container__steps">
+    <mat-horizontal-stepper [linear]="isLinear" #stepper>
+      <mat-step [completed]="isValidfirstForm">
+        <ng-template matStepLabel>Personal Information</ng-template>
+        <app-personal-info (valueChangedFirstForm)="valueChangedFirstForm($event)" (onSubmit)="onNextClick($event)"></app-personal-info>
+      </mat-step>
+      <mat-step [completed]="isValidSecondForm">
+        <ng-template matStepLabel>Work Experience</ng-template>
+        <app-work-experience (valueChangedSecondForm)="valueChangedSecondForm($event)" (onSubmit)="onNextClick($event)"></app-work-experience>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Education Details</ng-template>
+        <app-education-detail></app-education-detail>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Skills</ng-template>
+        <app-skills></app-skills>
+      </mat-step>
+    </mat-horizontal-stepper>
 
-    </div>
+  </div>
 </div>

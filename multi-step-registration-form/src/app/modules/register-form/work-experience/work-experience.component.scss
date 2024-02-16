@@ -1,0 +1,11 @@
+.inmar-work-container {
+    display: flex;
+    flex-direction: column;
+
+    .inmar-work-experience {
+        .inmar-form-field {
+            min-width: 20%;
+            max-width: 30%;
+        }
+    }
+}

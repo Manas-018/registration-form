@@ -1,0 +1,48 @@
+<form *ngIf="ThirdFormGroup" [formGroup]="ThirdFormGroup" class="inmar-work-experience">
+    <div formArrayName="thirdFormGroupArr">
+        <ng-container *ngFor="let row of ThirdFormGroup.get('thirdFormGroupArr').controls; let i = index">
+            <div [formGroupName]="i">
+                <mat-card>
+                    <mat-form-field class="inmar-form-field">
+                        <input matInput placeholder="Institution Name" [formControlName]="'collegeNameFormControl'"
+                            required [errorStateMatcher]="validate">
+                        <mat-error>{{getErrorMessage('collegeNameFormControl', i)}}</mat-error>
+                    </mat-form-field>
+                    <br />
+                    <mat-form-field class="inmar-form-field">
+                        <input matInput placeholder="University Name" [formControlName]="'universityFormControl'"
+                            required [errorStateMatcher]="validate">
+                        <mat-error>{{getErrorMessage('universityFormControl', i)}}</mat-error>
+                    </mat-form-field>
+                    <br />
+                    <mat-form-field class="inmar-form-field">
+                        <mat-label>Degree</mat-label>
+                        <mat-select [formControl]="degreeFormControl" name="degreeFormControl" required
+                            [errorStateMatcher]="validate" (selectionChange)="onDegreeChange($event,i)">
+                            <mat-option *ngFor="let d of degrees" [value]="d">{{d}}</mat-option>
+                        </mat-select>
+                        <mat-error>{{getErrorMessage('degreeFormControl', i)}}</mat-error>
+                    </mat-form-field>
+                    <br />
+                    <mat-form-field class="inmar-form-field">
+                        <input matInput [matDatepicker]="dp" placeholder="Month and Year" [formControl]="passedOutDate">
+                        <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                        <mat-datepicker #dp startView="multi-year" (yearSelected)="chosenYearHandler($event, i)"
+                            (monthSelected)="chosenMonthHandler($event, dp, i)" panelClass="example-month-picker">
+                        </mat-datepicker>
+                    </mat-form-field>
+                    <br />
+                    <button mat-icon-button mat-raised-button matTooltip="Click to Edit" class="iconbutton" color="primary" (click)="addItem()">
+                        <mat-icon aria-label="Add">add</mat-icon>
+                      </button>&nbsp;&nbsp;
+                    <button mat-icon-button mat-raised-button matTooltip="Click to Delete" class="iconbutton" color="warn" (click)="removeItem(i)">
+                        <mat-icon aria-label="Delete">delete</mat-icon>
+                      </button>
+                </mat-card>
+            </div>
+        </ng-container>
+        <br/>
+        <button mat-raised-button mat-button matStepperPrevious>Back</button> &nbsp;&nbsp;
+        <button mat-raised-button mat-button matStepperNext [disabled]="nextDisabled" (click)="onFormSubmit()">Next</button>
+    </div>
+</form>

@@ -9,19 +9,29 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 export class RegisterFormComponent implements OnInit {
 
   isLinear: boolean = true;
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
-  // thirdFormGroup: FormGroup;
+  isValidfirstForm: boolean = true;
+  isValidSecondForm: boolean = true;
+  isValidThirdForm: boolean = true
+  // secondFormGroup: FormGroup;
+  thirdFormGroup: FormGroup;
+  formData:any;
 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
-    this.firstFormGroup = this.fb.group({
-      firstCtrl: ['', Validators.required]
-    });
-    this.secondFormGroup = this.fb.group({
-      secondCtrl: ['', Validators.required]
-    });
+  }
+
+  valueChangedFirstForm(formInstance) {
+    this.isValidfirstForm = formInstance.valid;
+  }
+
+  valueChangedSecondForm(formInstance) {
+    this.isValidSecondForm = formInstance.valid;
+  }
+
+  onNextClick(event) {
+    this.formData = {...this.formData,...event};
+    console.log(this.formData);
   }
 
 }

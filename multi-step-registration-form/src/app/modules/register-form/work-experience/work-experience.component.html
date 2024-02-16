@@ -1,0 +1,60 @@
+<div class="inmar-work-container">
+    <div class="inmar-work-container__info">
+        <mat-slide-toggle class="example-margin" [color]="'primary'" [checked]="isExperienced" (ngModelChange)="handleToggle()"
+            [(ngModel)]="isExperienced">
+            Have any work experience ?
+        </mat-slide-toggle>
+    </div>
+    <div *ngIf="isShowExperiencedForm" class="inmar-work-container__experience">
+        <form *ngIf="SecondFormGroup" [formGroup]="SecondFormGroup" class="inmar-work-experience">
+            <div formArrayName="arr">
+                <ng-container *ngFor="let row of SecondFormGroup.get('arr').controls; let i = index">
+                    <div [formGroupName]="i">
+                        <mat-card>
+                            <mat-form-field>
+                                <input hidden=true matInput>
+                                <mat-checkbox matInput formControlName="isFirstCompany" [color]="'primary'" (click)="onFirstCompanyClick(i)">
+                                    Is this Your First Company ?
+                                </mat-checkbox>
+                            </mat-form-field>
+                        <br/>
+                            <mat-form-field class="inmar-form-field">
+                                <input matInput placeholder="Company Name" [formControlName]="'companyFormControl'" required
+                                    [errorStateMatcher]="validate">
+                                <mat-error>{{getErrorMessage('companyFormControl', i)}}</mat-error>
+                            </mat-form-field>
+                            <br/>
+                            <mat-form-field class="inmar-form-field">
+                                <input matInput placeholder="Role" [formControlName]="'designationControl'" required
+                                    [errorStateMatcher]="validate">
+                                <mat-error>{{getErrorMessage('companyFormControl', i)}}</mat-error>
+                            </mat-form-field>
+                            <br/>
+                            <mat-form-field>
+                                <input matInput [matDatepicker]="picker1" placeholder="Start Date" formControlName="startDateControl">
+                                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                <mat-datepicker #picker1></mat-datepicker>
+                              </mat-form-field>&nbsp;&nbsp;
+                              <mat-form-field>
+                                <input matInput [matDatepicker]="picker2" placeholder="End Date" formControlName="endDateControl" [disabled]="isDisabledEndDate">
+                                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                                <mat-datepicker #picker2></mat-datepicker>
+                              </mat-form-field>
+                              <br/>
+                              <button mat-icon-button mat-raised-button matTooltip="Click to Edit" class="iconbutton" color="primary" (click)="addItem()">
+                                <mat-icon aria-label="Add">add</mat-icon>
+                              </button>&nbsp;&nbsp;
+                            <button mat-icon-button mat-raised-button matTooltip="Click to Delete" class="iconbutton" color="warn" (click)="removeItem(i)">
+                                <mat-icon aria-label="Delete">delete</mat-icon>
+                              </button>
+                        </mat-card>
+                        <br/>
+                    </div>
+                </ng-container>
+                <br/>
+                <button mat-raised-button mat-button matStepperPrevious>Back</button> &nbsp;&nbsp;
+                <button mat-raised-button mat-button matStepperNext [disabled]="nextDisabled" (click)="onFormSubmit()">Next</button>
+            </div>
+        </form>
+    </div>
+</div>
