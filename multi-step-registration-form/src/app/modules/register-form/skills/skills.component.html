@@ -1,1 +1,33 @@
-<p>skills works!</p>
+<form *ngIf="FourthFormGroup" [formGroup]="FourthFormGroup">
+    <div  formArrayName="fourthFormGroupArr">
+        <ng-container *ngFor="let row of FourthFormGroup.get('fourthFormGroupArr').controls; let i = index">
+            <div [formGroupName]="i">
+                <mat-card>
+                    <mat-form-field class="inmar-form-field">
+                        <input matInput placeholder="Enter your skill" [formControlName]="'skillsFormControl'"
+                            required [errorStateMatcher]="validate">
+                        <mat-error>{{getErrorMessage('skillsFormControl', i)}}</mat-error>
+                    </mat-form-field>&nbsp;&nbsp;
+                    <mat-form-field class="inmar-form-field">
+                        <mat-label>Level</mat-label>
+                        <mat-select [formControl]="levelFormControl" name="levelFormControl" required
+                            [errorStateMatcher]="validate" (selectionChange)="onLevelChange($event,i)">
+                            <mat-option *ngFor="let d of Levels" [value]="d">{{d}}</mat-option>
+                        </mat-select>
+                        <mat-error>{{getErrorMessage('levelFormControl', i)}}</mat-error>
+                    </mat-form-field>&nbsp;&nbsp;
+                    <button mat-icon-button mat-raised-button matTooltip="Click to Add" class="iconbutton" color="primary" (click)="addItem()">
+                        <mat-icon aria-label="Add">add</mat-icon>
+                      </button>&nbsp;&nbsp;
+                    <button *ngIf="i !== 0" mat-icon-button mat-raised-button matTooltip="Click to Delete" class="iconbutton" color="warn" (click)="removeItem(i)">
+                        <mat-icon aria-label="Delete">delete</mat-icon>
+                      </button>
+                </mat-card>
+                <br />
+            </div>
+        </ng-container>
+        <br/>
+        <button mat-raised-button mat-button matStepperPrevious>Back</button> &nbsp;&nbsp;
+        <button mat-raised-button mat-button matStepperNext [disabled]="nextDisabled" (click)="onFormSubmit()">Submit</button>
+    </div>
+</form>

@@ -44,7 +44,7 @@
                               <button mat-icon-button mat-raised-button matTooltip="Click to Edit" class="iconbutton" color="primary" (click)="addItem()">
                                 <mat-icon aria-label="Add">add</mat-icon>
                               </button>&nbsp;&nbsp;
-                            <button mat-icon-button mat-raised-button matTooltip="Click to Delete" class="iconbutton" color="warn" (click)="removeItem(i)">
+                            <button *ngIf="i !== 0" mat-icon-button mat-raised-button matTooltip="Click to Delete" class="iconbutton" color="warn" (click)="removeItem(i)">
                                 <mat-icon aria-label="Delete">delete</mat-icon>
                               </button>
                         </mat-card>

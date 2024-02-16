@@ -12,13 +12,13 @@
         <ng-template matStepLabel>Work Experience</ng-template>
         <app-work-experience (valueChangedSecondForm)="valueChangedSecondForm($event)" (onSubmit)="onNextClick($event)"></app-work-experience>
       </mat-step>
-      <mat-step>
+      <mat-step [completed]="isValidThirdForm">
         <ng-template matStepLabel>Education Details</ng-template>
-        <app-education-detail></app-education-detail>
+        <app-education-detail (valueChangedThirdForm)="valueChangedThirdForm($event)" (onSubmit)="onNextClick($event)"></app-education-detail>
       </mat-step>
-      <mat-step>
+      <mat-step [completed]="isValidFourthForm">
         <ng-template matStepLabel>Skills</ng-template>
-        <app-skills></app-skills>
+        <app-skills (valueChangedFourthForm)="valueChangedFourthForm($event)" (onSubmit)="onFormSubmit($event)"></app-skills>
       </mat-step>
     </mat-horizontal-stepper>
 

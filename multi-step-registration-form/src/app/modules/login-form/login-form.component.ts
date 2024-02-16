@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { errorMessages } from 'src/app/constants/common';
+import { errorMessages, routePaths } from 'src/app/constants/common';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -41,7 +41,7 @@ export class LoginFormComponent implements OnInit {
   }
 
   goToRegistrationForm(){
-    this.router.navigate(['/registration']);
+    this.router.navigate([`${routePaths.REGISTRATION}`]);
   }
   
 
