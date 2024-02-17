@@ -1,5 +1,5 @@
 <form *ngIf="ThirdFormGroup" [formGroup]="ThirdFormGroup" class="inmar-work-experience">
-    <div formArrayName="thirdFormGroupArr">
+    <div formArrayName="thirdFormGroupArr" class="inmar-work-experience__details">
         <ng-container *ngFor="let row of ThirdFormGroup.get('thirdFormGroupArr').controls; let i = index">
             <div [formGroupName]="i">
                 <mat-card>
@@ -42,7 +42,8 @@
             </div>
         </ng-container>
         <br/>
-        <button mat-raised-button mat-button matStepperPrevious>Back</button> &nbsp;&nbsp;
-        <button mat-raised-button mat-button matStepperNext [disabled]="nextDisabled" (click)="onFormSubmit()">Next</button>
+       
     </div>
+    <button mat-raised-button mat-button matStepperPrevious class="back-margin">Back</button> &nbsp;&nbsp;
+    <button mat-raised-button mat-button matStepperNext [disabled]="nextDisabled" (click)="onFormSubmit()">Next</button>
 </form>

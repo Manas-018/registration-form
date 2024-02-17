@@ -7,5 +7,15 @@
             min-width: 20%;
             max-width: 30%;
         }
+
+        &__details {
+            min-height: 37vh;
+            max-height: 68vh;
+            overflow-y: scroll;
+        }
+    }
+
+    .back-margin {
+        margin-top: 2rem;
     }
 }

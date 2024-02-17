@@ -1,13 +1,24 @@
 .inmar-work-experience {
-    .inmar-form-field {
-        min-width: 20%;
-        max-width: 30%;
-    }
-    .example-month-picker .mat-calendar-period-button {
-        pointer-events: none;
-      }
-      
-      .example-month-picker .mat-calendar-arrow {
-        display: none;
-      }
+  .inmar-form-field {
+    min-width: 20%;
+    max-width: 30%;
+  }
+
+  .example-month-picker .mat-calendar-period-button {
+    pointer-events: none;
+  }
+
+  .example-month-picker .mat-calendar-arrow {
+    display: none;
+  }
+
+  &__details {
+    min-height: 37vh;
+    max-height: 68vh;
+    overflow-y: scroll;
+  }
+
+  .back-margin {
+    margin-top: 2rem;
+  }
 }
