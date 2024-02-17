@@ -7,7 +7,7 @@
     </div>
     <div *ngIf="isShowExperiencedForm" class="inmar-work-container__experience">
         <form *ngIf="SecondFormGroup" [formGroup]="SecondFormGroup" class="inmar-work-experience">
-            <div formArrayName="arr">
+            <div formArrayName="arr" class="inmar-work-experience__details">
                 <ng-container *ngFor="let row of SecondFormGroup.get('arr').controls; let i = index">
                     <div [formGroupName]="i">
                         <mat-card>
@@ -52,9 +52,10 @@
                     </div>
                 </ng-container>
                 <br/>
-                <button mat-raised-button mat-button matStepperPrevious>Back</button> &nbsp;&nbsp;
-                <button mat-raised-button mat-button matStepperNext [disabled]="nextDisabled" (click)="onFormSubmit()">Next</button>
+               
             </div>
+            <button mat-raised-button mat-button matStepperPrevious class="back-margin">Back</button> &nbsp;&nbsp;
+            <button mat-raised-button mat-button matStepperNext [disabled]="nextDisabled" (click)="onFormSubmit()">Next</button>
         </form>
     </div>
 </div>
